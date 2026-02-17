@@ -46,27 +46,27 @@ const ComplaintForm = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="rounded-xl border border-border/50 bg-card p-6"
+          className="rounded-xl border border-border/30 bg-card/50 backdrop-blur-sm p-6"
         >
-          <h2 className="text-xl font-bold mb-1">Submit New Complaint</h2>
+          <h2 className="text-xl font-bold mb-1 tracking-tight">Submit New Complaint</h2>
           <p className="text-sm text-muted-foreground mb-6">Provide details about your issue for faster resolution</p>
 
           <div className="space-y-5">
             <div className="space-y-2">
-              <Label>Title</Label>
+              <Label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Title</Label>
               <Input
                 placeholder="Brief summary of the issue"
                 value={form.title}
                 onChange={(e) => setForm({ ...form, title: e.target.value })}
-                className="bg-secondary/50 border-border/50"
+                className="bg-secondary/30 border-border/30 rounded-xl h-11"
               />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label>Category</Label>
+                <Label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Category</Label>
                 <Select onValueChange={(v) => setForm({ ...form, category: v })}>
-                  <SelectTrigger className="bg-secondary/50 border-border/50">
+                  <SelectTrigger className="bg-secondary/30 border-border/30 rounded-xl h-11">
                     <SelectValue placeholder="Select category" />
                   </SelectTrigger>
                   <SelectContent>
@@ -79,9 +79,9 @@ const ComplaintForm = () => {
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label>Priority</Label>
+                <Label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Priority</Label>
                 <Select onValueChange={(v) => setForm({ ...form, priority: v })}>
-                  <SelectTrigger className="bg-secondary/50 border-border/50">
+                  <SelectTrigger className="bg-secondary/30 border-border/30 rounded-xl h-11">
                     <SelectValue placeholder="Select priority" />
                   </SelectTrigger>
                   <SelectContent>
@@ -95,20 +95,20 @@ const ComplaintForm = () => {
             </div>
 
             <div className="space-y-2">
-              <Label>Description</Label>
+              <Label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Description</Label>
               <Textarea
                 placeholder="Provide detailed information about your issue..."
                 value={form.description}
                 onChange={(e) => setForm({ ...form, description: e.target.value })}
                 rows={6}
-                className="bg-secondary/50 border-border/50"
+                className="bg-secondary/30 border-border/30 rounded-xl"
               />
             </div>
 
             <Button
               onClick={handleSubmit}
               disabled={loading}
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 h-11"
+              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 h-12 rounded-xl shadow-[0_0_20px_hsl(160_84%_39%/0.2)] hover:shadow-[0_0_30px_hsl(160_84%_39%/0.3)] transition-all duration-300"
             >
               {loading ? (
                 <span className="flex items-center gap-2">

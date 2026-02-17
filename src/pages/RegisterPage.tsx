@@ -15,47 +15,51 @@ const RegisterPage = () => {
   const handleRegister = async () => {
     setLoading(true);
     await new Promise((r) => setTimeout(r, 800));
-    // Mock registration
     setLoading(false);
     navigate("/");
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen bg-background">
       {/* Left - Branding */}
-      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden items-center justify-center p-12">
+      <div className="hidden lg:flex lg:w-[55%] relative overflow-hidden items-center justify-center p-16">
         <img src={authBg} alt="" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-background/70" />
+        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+        <div className="absolute inset-0 grid-pattern opacity-30" />
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/8 rounded-full blur-[100px]" />
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative z-10 max-w-md"
+          className="relative z-10 max-w-lg"
         >
-          <div className="flex items-center gap-3 mb-8">
-            <div className="h-12 w-12 rounded-xl bg-primary/20 flex items-center justify-center">
+          <div className="flex items-center gap-3 mb-10">
+            <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center shadow-[0_0_30px_hsl(160_84%_39%/0.2)]">
               <Shield className="h-7 w-7 text-primary" />
             </div>
-            <span className="text-2xl font-bold text-foreground">CMS</span>
+            <span className="text-2xl font-bold text-foreground tracking-wide">CMS</span>
           </div>
-          <h1 className="text-4xl font-bold text-foreground mb-4 leading-tight">
+          <h1 className="text-5xl font-extrabold text-foreground mb-4 leading-[1.1] tracking-tight">
             Join the<br />
             <span className="gradient-text">Smart Resolution</span><br />
             Platform
           </h1>
-          <p className="text-muted-foreground text-lg leading-relaxed">
+          <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
             Get started in seconds. Track, resolve, and analyze complaints with AI-powered intelligence.
           </p>
         </motion.div>
       </div>
 
       {/* Right - Form */}
-      <div className="flex-1 flex items-center justify-center p-6 lg:p-12">
+      <div className="flex-1 flex items-center justify-center p-6 lg:p-12 relative">
+        <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-primary/5 rounded-full blur-[80px]" />
+        
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="w-full max-w-[400px]"
+          className="w-full max-w-[420px] relative z-10"
         >
           <div className="flex items-center gap-3 mb-8 lg:hidden">
             <div className="h-10 w-10 rounded-xl bg-primary/20 flex items-center justify-center">
@@ -64,50 +68,50 @@ const RegisterPage = () => {
             <span className="text-xl font-bold">CMS</span>
           </div>
 
-          <h2 className="text-2xl font-bold mb-2">Create your account</h2>
+          <h2 className="text-3xl font-bold mb-2 tracking-tight">Create your account</h2>
           <p className="text-muted-foreground mb-8">Get started with complaint management</p>
 
-          <div className="space-y-4">
+          <div className="space-y-5">
             <div className="space-y-2">
-              <Label htmlFor="name">Full Name</Label>
+              <Label htmlFor="name" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Full Name</Label>
               <div className="relative">
-                <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground/60" />
                 <Input
                   id="name"
                   placeholder="John Doe"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="pl-10 h-11 bg-secondary/50 border-border/50 focus:border-primary"
+                  className="pl-10 h-12 bg-secondary/30 border-border/30 rounded-xl focus:border-primary/50 focus:shadow-[0_0_0_3px_hsl(160_84%_39%/0.08)] transition-all"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Email</Label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground/60" />
                 <Input
                   id="email"
                   type="email"
                   placeholder="you@company.com"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="pl-10 h-11 bg-secondary/50 border-border/50 focus:border-primary"
+                  className="pl-10 h-12 bg-secondary/30 border-border/30 rounded-xl focus:border-primary/50 focus:shadow-[0_0_0_3px_hsl(160_84%_39%/0.08)] transition-all"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Password</Label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground/60" />
                 <Input
                   id="password"
                   type="password"
                   placeholder="••••••••"
                   value={form.password}
                   onChange={(e) => setForm({ ...form, password: e.target.value })}
-                  className="pl-10 h-11 bg-secondary/50 border-border/50 focus:border-primary"
+                  className="pl-10 h-12 bg-secondary/30 border-border/30 rounded-xl focus:border-primary/50 focus:shadow-[0_0_0_3px_hsl(160_84%_39%/0.08)] transition-all"
                 />
               </div>
             </div>
@@ -115,7 +119,7 @@ const RegisterPage = () => {
             <Button
               onClick={handleRegister}
               disabled={loading}
-              className="w-full h-11 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
+              className="w-full h-12 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold rounded-xl shadow-[0_0_20px_hsl(160_84%_39%/0.2)] hover:shadow-[0_0_30px_hsl(160_84%_39%/0.3)] transition-all duration-300"
             >
               {loading ? (
                 <span className="flex items-center gap-2">
